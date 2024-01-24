@@ -31,6 +31,14 @@ const Header: React.FC<HeaderProps> = ({
     const supabaseClient = useSupabaseClient();
     const { user } = useUser();
 
+    const homePage = () => {
+        router.push("/");
+    }
+
+    const searchPage = () => {
+        router.push("/search");
+    }
+
     const handleLogout = async () => {
         const { error } = await supabaseClient.auth.signOut();
         player.reset();
@@ -98,6 +106,7 @@ const Header: React.FC<HeaderProps> = ({
                 </div>
                 <div className="flex md:hidden gap-x-2 items-center">
                     <button
+                        onClick={homePage}
                         className="
                            rounded-full
                            p-2
@@ -112,6 +121,7 @@ const Header: React.FC<HeaderProps> = ({
                         <HiHome className="text-black" size={20}/>
                     </button>
                     <button
+                        onClick={searchPage}
                         className="
                            rounded-full
                            p-2
